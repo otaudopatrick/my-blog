@@ -1,0 +1,37 @@
+<div class="max-w-screen-sm mx-auto my-0 px-8 py-16">
+    <header class="text-center py-4">
+        <h1 class="text-4xl font-bold text-gray-800">Blog</h1>
+    </header>
+
+    <ul>
+        <li>Últimos Posts
+            <ul>
+                <% @recent_posts.each do |post| %>
+                    <li>
+                        <span><%= post[:date].strftime("%d/%m/%Y") %></span>
+                        <a href="<%= post_path(file_name: post[:file_name]) %>" class="text-blue-600 underline"><%= post[:title] %></a>
+                    </li>
+                <% end %>
+            </ul>
+        </li>
+        <li>Menu
+            <ul>
+                <li>
+                    <%= link_to 'Sobre Mim', about_path, class: 'text-blue-600 underline' %>
+                </li>
+                <li>Links
+                    <ul>
+                        <li>
+                            <a href="https://www.linkedin.com/in/patrickluzdev/" target="_blank" class="text-blue-600 underline">Linkedin</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/otaudopatrick" class="text-blue-600 underline">Github</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+    </ul>
+</div>
+        

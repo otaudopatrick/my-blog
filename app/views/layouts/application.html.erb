@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Blog" %></title>
+  <title><%= (@metadata || {})['title'] || "Patrick Luz | Blog" %></title>
+    <meta name="description" content="<%= (@metadata || {})['description'] || "Eu sou Patrick Luz, desenvolvedor apaixonado por tecnologia." %>">
+    <meta name="author" content="<%= (@metadata || {})['author'] || "Patrick Luz" %>">
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -18,8 +21,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="text-[black] text-base leading-[1.4] min-h-full break-words m-0 font-mono">
+    <main>
       <%= yield %>
     </main>
   </body>
