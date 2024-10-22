@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   #
 
-  get "posts/:file_name", to: "post#show", as: "post"
+  resources :post, param: :slug, only: [:index, :show]
   get "about", to: "pages#about", as: "about"
 end

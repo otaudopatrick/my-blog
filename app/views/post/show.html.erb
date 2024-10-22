@@ -1,6 +1,30 @@
 <div class="markdown-content max-w-screen-sm mx-auto my-0 px-8 py-16">
+  <a href="<%= root_path %>" class="text-blue-600 underline">..</a>
+
+  <p style="text-align: right">
+    <% if @post.present? && @post.created_at.present? %>
+      <time datetime="<%= @post.created_at.iso8601 %>"><%= @post.created_at.strftime("%d/%m/%Y") %></time>
+    <% else %>
+      <time>Data indisponível</time>
+    <% end %>
+  </p>
+
+  <header class="text-center py-4">
+    <% if @post.present? %>
+      <h1 class="text-4xl font-bold text-gray-800" style="margin-bottom: 0"><%= @post.title %></h1>
+    <% else %>
+      <h1 class="text-4xl font-bold text-gray-800" style="margin-bottom: 0">Post não encontrado</h1>
+    <% end %>
+  </header>
+
+  <% if @markdown_content.present? %>
     <%= markdown(@markdown_content) %>
+  <% else %>
+    <p>Conteúdo não disponível.</p>
+  <% end %>
 </div>
+
+<!-- Seção de comentários com Utterances -->
 <script src="https://utteranc.es/client.js"
         repo="otaudopatrick/my-blog"
         issue-term="url"
