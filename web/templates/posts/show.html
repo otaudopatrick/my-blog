@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Meta.Title}}</title>
+    <meta name="description" content="{{.Meta.Description}}">
+    <meta name="keywords" content="{{.Meta.Keywords}}">
+    <meta name="author" content="{{.Meta.Author}}">
+    <link href="/static/css/styles.css" rel="stylesheet">
+</head>
+
+<body class="text-[black] text-base leading-[1.4] min-h-full break-words m-0 font-mono">
+    <main>
+        <div class="markdown-content max-w-screen-sm mx-auto my-0 px-8 py-16">
+            <a href="/" class="text-blue-600 underline">..</a>
+
+            <p style="text-align: right">
+                <time datetime="{{ .Post.CreatedAt.Format " 2006-01-02T15:04:05Z07:00" }}">
+                    {{ .Post.CreatedAt.Format "02-01-2006" }}
+                </time>
+            </p>
+
+            <header class="text-center py-4">
+                <h1 class="text-4xl font-bold text-gray-800" style="margin-bottom: 0">{{ .Post.Title }}</h1>
+            </header>
+
+
+            {{ .Content }}
+
+            <script src="https://utteranc.es/client.js" repo="otaudopatrick/my-blog" issue-term="url"
+                theme="github-light" crossorigin="anonymous" async>
+                </script>
+        </div>
+
+    </main>
+</body>
+
+</html>

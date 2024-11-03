@@ -1,0 +1,15 @@
+# Caminho para o diretório de trabalho
+root = "."
+# Arquivo a ser executado (no seu caso, o main.go dentro de cmd/blog)
+cmd = "go run cmd/blog/main.go"
+# Define o ambiente de desenvolvimento
+env = ["APP_ENV=dev"]
+
+# Definição das pastas a serem monitoradas
+[watcher]
+# Monitora todas as mudanças em arquivos .go e .html
+extensions = [".go", ".html"]
+
+# Configuração de saída para o Air
+[log]
+level = "debug"
