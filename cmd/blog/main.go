@@ -8,7 +8,8 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
-	"github.com/otaudopatrick/my-blog/database"
+
+	"github.com/otaudopatrick/my-blog/internal/database"
 	"github.com/otaudopatrick/my-blog/internal/models"
 	"github.com/otaudopatrick/my-blog/internal/utils"
 	"github.com/yuin/goldmark"
@@ -36,21 +37,11 @@ func main() {
 		var posts []models.Post
 		database.Connection.Find(&posts)
 
-		formattedPosts := make([]map[string]interface{}, len(posts))
-
-		for i, post := range posts {
-			formattedPosts[i] = map[string]interface{}{
-				"Title": post.Title,
-				"Date":  post.CreatedAt.Format("02-01-2006"),
-				"Slug":  post.Slug,
-			}
-		}
-
 		meta := utils.DefaultMetaTags()
 
 		return c.Render("home", fiber.Map{
 			"Meta":  meta,
-			"Posts": formattedPosts,
+			"Posts": posts,
 		})
 	})
 

@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{.Meta.Title}}</title>
-    <meta name="description" content="{{.Meta.Description}}">
-    <meta name="keywords" content="{{.Meta.Keywords}}">
-    <meta name="author" content="{{.Meta.Author}}">
+    <title>{{ .Meta.Title }}</title>
+    <meta name="description" content="{{ .Meta.Description }}">
+    <meta name="keywords" content="{{ .Meta.Keywords }}">
+    <meta name="author" content="{{ .Meta.Author }}">
     <link href="/static/css/styles.css" rel="stylesheet">
 </head>
 
@@ -17,37 +17,40 @@
             <header class="text-center py-4">
                 <h1 class="text-4xl font-bold text-gray-800">Blog</h1>
             </header>
-            <ul>
-                <li>Últimos Posts
-                    <ul>
-                        {{ range .Posts }}
-                        <li>
-                            <span>{{ .Date }}</span>
-                            <a href="/{{ .Slug }}" class="text-blue-600 underline">{{ .Title }}</a>
-                        </li>
-                        {{ end }}
-                    </ul>
-                </li>
-                <li>Menu
-                    <ul>
-                        <li>
-                            <a href="/about" class="text-blue-600 underline">Sobre Mim</a>
-                        </li>
-                        <li>Links
-                            <ul>
-                                <li>
-                                    <a href="https://www.linkedin.com/in/patrickluzdev/" target="_blank"
-                                        class="text-blue-600 underline">Linkedin</a>
-                                </li>
-                                <li>
-                                    <a href="https://github.com/otaudopatrick" target="_blank"
-                                        class="text-blue-600 underline">Github</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+            <section>
+                <h2 class="text-xl font-semibold mt-4 mb-2">Últimos Posts</h2>
+                <ul>
+                    {{ range .Posts }}
+                    <li class="mb-4">
+                        <time datetime="{{ .CreatedAt.Format " 2006-01-02T15:04:05Z07:00" }}">
+                            {{ .CreatedAt.Format "02-01-2006" }}
+                        </time>
+                        <a href="/{{ .Slug }}" class="text-blue-600 underline ml-2">{{ .Title }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </section>
+            <nav class="mt-8">
+                <h2 class="text-xl font-semibold mb-2">Menu</h2>
+                <ul>
+                    <li class="mb-2">
+                        <a href="/about" class="text-blue-600 underline">Sobre Mim</a>
+                    </li>
+                    <li>
+                        <h3 class="text-lg font-medium mb-1">Links</h3>
+                        <ul>
+                            <li>
+                                <a href="https://www.linkedin.com/in/patrickluzdev/" target="_blank"
+                                    class="text-blue-600 underline">LinkedIn</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/otaudopatrick" target="_blank"
+                                    class="text-blue-600 underline">GitHub</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </main>
 </body>
